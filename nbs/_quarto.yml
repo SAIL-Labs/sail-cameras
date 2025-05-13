@@ -10,13 +10,18 @@ format:
   commonmark: default
 
 website:
-  twitter-card: true
+  twitter-card: false
   open-graph: true
-  repo-actions: [issue]
+  repo-actions: [source, issue]
   navbar:
+    title: "A helpful camera interface."
     background: primary
     search: true
+  search: 
+    location: sidebar
+    type: textbox
   sidebar:
     style: floating
+    search: true
 
 metadata-files: [nbdev.yml, sidebar.yml]

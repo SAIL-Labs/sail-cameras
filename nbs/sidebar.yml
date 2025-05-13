@@ -3,3 +3,9 @@ website:
     contents:
       - index.ipynb
       - 00_core.ipynb
+      - section: cameras
+        contents:
+          - cameras/01_first-light.ipynb
+      - section: tutorials
+        contents:
+          - tutorials/demo.ipynb
