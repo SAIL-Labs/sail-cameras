@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "sail-cameras"
+  site-url: "https://SAIL-Labs.github.io/sail-cameras"
+  description: "A universal interface for various cameras used in the lab."
+  repo-branch: main
+  repo-url: "https://github.com/SAIL-Labs/sail-cameras"
