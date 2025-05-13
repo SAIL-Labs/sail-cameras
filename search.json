@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "BaseCameraInterface",
+    "section": "",
+    "text": "This module provides:\n\nA uniform API across all supported camera hardware.\nSOLID design principles to promote single-responsibility, extensibility, and decoupling.\nType safety through Python type hints.\nEasy testing via dependency injection and mockability.",
+    "crumbs": [
+      "BaseCameraInterface"
+    ]
+  },
+  {
+    "objectID": "core.html#purpose",
+    "href": "core.html#purpose",
+    "title": "BaseCameraInterface",
+    "section": "",
+    "text": "This module provides:\n\nA uniform API across all supported camera hardware.\nSOLID design principles to promote single-responsibility, extensibility, and decoupling.\nType safety through Python type hints.\nEasy testing via dependency injection and mockability.",
+    "crumbs": [
+      "BaseCameraInterface"
+    ]
+  },
+  {
+    "objectID": "core.html#key-interface-camerainterface",
+    "href": "core.html#key-interface-camerainterface",
+    "title": "BaseCameraInterface",
+    "section": "Key Interface: CameraInterface",
+    "text": "Key Interface: CameraInterface\nCameraInterface is an abstract base class defining the essential operations expected from any camera implementation.\n\nCore Lifecycle Methods\n\n\n\n\n\n\n\nMethod\nDescription\n\n\n\n\n__init__(**kwargs)\nSets up camera SDK, applies configuration, and prepares for acquisition.\n\n\nstart_capture()\nBegins image acquisition or live streaming.\n\n\nstop_capture()\nHalts image acquisition or live streaming.\n\n\nget_image(wait=True)\nRetrieves the latest frame, optionally blocking until a new one is ready.\n\n\nclose()\nReleases hardware resources and shuts down the camera safely.\n\n\n\n\n\n\nCamera Settings as Properties\nCommon camera parameters are exposed as Python properties, allowing both reading and writing through a uniform interface:\n\n\n\nProperty\nType\nDescription\n\n\n\n\nexposure\nfloat\nCamera exposure time (in seconds).\n\n\nframerate\nfloat\nFrame rate (in frames per second).\n\n\ngain\nfloat\nSensor analog gain.\n\n\n\nThese properties standardize hardware parameter control across heterogeneous devices.\n\n\n\nDark Frame Management\nCameraInterface includes methods for managing dark-frame capture and reuse:\n\n\n\n\n\n\n\nMethod\nDescription\n\n\n\n\ntake_dark(frames, save_path)\nCaptures and averages multiple frames to generate a dark frame.\n\n\nload_dark(file)\nLoads a previously saved dark frame from disk for subtraction or QA.\n\n\n\nThis is particularly useful for calibration routines and background subtraction workflows.",
+    "crumbs": [
+      "BaseCameraInterface"
+    ]
+  },
+  {
+    "objectID": "core.html#design-considerations",
+    "href": "core.html#design-considerations",
+    "title": "BaseCameraInterface",
+    "section": "Design Considerations",
+    "text": "Design Considerations\n\nInterface Enforcement: All camera drivers must adhere to the same method/property interface, enabling interchangeability without modification to upstream systems.\nExtensibility: New camera types can be integrated by subclassing CameraInterface and implementing the required methods.\nMockability for Testing: By abstracting away hardware-specific logic, the interface enables injection of mocks and stubs in test environments.\nConsistency: Centralized documentation and type annotations help enforce clarity and uniformity across all implementations.",
+    "crumbs": [
+      "BaseCameraInterface"
+    ]
+  },
+  {
+    "objectID": "core.html#intended-usage",
+    "href": "core.html#intended-usage",
+    "title": "BaseCameraInterface",
+    "section": "Intended Usage",
+    "text": "Intended Usage\nThe module is meant to be subclassed by hardware-specific drivers. This approach enables higher-level tools (e.g. data acquisition scripts, GUIs, or analysis pipelines) to remain agnostic to the underlying camera backend.\nFor a practical implementation, refer to concrete subclasses such as FliCamera, which adapts the interface to the FliSdk hardware.\n\n\nsource\n\nBaseCameraInterface.start_capture\n\n BaseCameraInterface.start_capture ()\n\nBegin image acquisition or live stream.\n\nsource\n\n\nBaseCameraInterface.stop_capture\n\n BaseCameraInterface.stop_capture ()\n\nHalt image acquisition or live stream.\n\nsource\n\n\nBaseCameraInterface.exposure\n\n BaseCameraInterface.exposure ()\n\nGet or set the camera exposure time in seconds.\n\nsource\n\n\nBaseCameraInterface.framerate\n\n BaseCameraInterface.framerate ()\n\nGet or set the camera frame rate in frames per second.\n\nsource\n\n\nBaseCameraInterface.gain\n\n BaseCameraInterface.gain ()\n\nGet or set the camera gain (e.g., sensor analog gain).\n\nsource\n\n\nBaseCameraInterface.get_image\n\n BaseCameraInterface.get_image (wait:bool=True)\n\nRetrieve the latest image frame. :param wait: block until a new frame is available :return: 2D numpy array representing the image\n\nsource\n\n\nBaseCameraInterface.take_dark\n\n BaseCameraInterface.take_dark (frames:int=100,\n                                save_path:Optional[pathlib.Path]=None)\n\nAcquire a dark frame by averaging multiple captures. :param frames: number of frames to average :param save_path: optional file path to save the dark frame :return: dark frame array\n\nsource\n\n\nBaseCameraInterface.load_dark\n\n BaseCameraInterface.load_dark (file:Union[str,pathlib.Path])\n\nLoad a previously saved dark frame from disk.\n\nsource\n\n\nBaseCameraInterface.close\n\n BaseCameraInterface.close ()\n\nRelease all resources and shut down the camera.\n\nsource\n\n\ngoodtimer\n\n goodtimer (time_ms)\n\n*Active wait timer for precise timing control.\nUnlike time.sleep(), this function actively consumes CPU cycles to ensure more precise timing at the expense of CPU usage.*\n\n\n\n\nType\nDetails\n\n\n\n\ntime_ms\nfloat\nTime to wait in milliseconds.",
+    "crumbs": [
+      "BaseCameraInterface"
+    ]
+  },
+  {
+    "objectID": "tutorials/demo.html",
+    "href": "tutorials/demo.html",
+    "title": "sail-cameras",
+    "section": "",
+    "text": "Warning\n\n\n\nThis tutorial is a work in progress.",
+    "crumbs": [
+      "tutorials",
+      "demo.html"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "sail-cameras",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "sail-cameras"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "sail-cameras",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall sail_cameras in Development mode\n# make sure sail_cameras package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to sail_cameras\n$ nbdev_prepare",
+    "crumbs": [
+      "sail-cameras"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "sail-cameras",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/SAIL-Labs/sail-cameras.git\nor from conda\n$ conda install -c SAIL-Labs sail_cameras\nor from pypi\n$ pip install sail_cameras\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "sail-cameras"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "sail-cameras",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "sail-cameras"
+    ]
+  },
+  {
+    "objectID": "cameras/first-light.html",
+    "href": "cameras/first-light.html",
+    "title": "FliCamera",
+    "section": "",
+    "text": "source\n\nFliCamera\n\n FliCamera (camera_index=0, camera_id=None, verbose=False,\n            cam_settings=None, cropdims=None, darkpath='./',\n            darkfile=None, buffersize_ims=1000)\n\n*First Light Imaging (FLI) camera implementation of the BaseCameraInterface.\nThis class provides concrete implementations of all abstract methods defined in the BaseCameraInterface for FLI cameras using the FliSdk_V2 SDK. It handles camera initialization, image acquisition, configuration management, and resource cleanup.\nThe camera can be used in a context manager (with statement) for automatic resource management.*\n\nsource\n\n\nFliCamera.external_trigger\n\n FliCamera.external_trigger (enabled, syncdelay=None, verbose=False)\n\nConfigure external triggering for the camera.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nenabled\nbool\n\nIf True, enables external triggering; if False, disables it.\n\n\nsyncdelay\nNoneType\nNone\nSynchronization delay in milliseconds.\n\n\nverbose\nbool\nFalse\nIf True, prints the commands and responses.\n\n\n\n\nsource\n\n\nFliCamera.check_nims_buffer\n\n FliCamera.check_nims_buffer ()\n\nCheck the number of images in the camera buffer.\n\nsource\n\n\nFliCamera.get_buffer_images\n\n FliCamera.get_buffer_images (return_im=True, verbose=False)\n\nRetrieve all images currently stored in the camera buffer.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nreturn_im\nbool\nTrue\nIf True, returns the image cube; otherwise just updates internal buffer.\n\n\nverbose\nbool\nFalse\nIf True, prints additional information.\n\n\nReturns\nnumpy.ndarray or None\n\n3D array of images (frames, height, width) if return_im is True, otherwise None.\n\n\n\n\nsource\n\n\nFliCamera.get_latest_image\n\n FliCamera.get_latest_image (return_im=True, waitfornewframe=True)\n\n*Retrieve the latest image frame from the camera.\nImplementation of the abstract get_image method from BaseCameraInterface.*\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nreturn_im\nbool\nTrue\nIf True, returns the image; otherwise just updates the internal buffer.\n\n\nwaitfornewframe\nbool\nTrue\nIf True, blocks until a new frame is available.\n\n\nReturns\nnumpy.ndarray or None\n\nThe image as a 2D numpy array if return_im is True, otherwise None.\n\n\n\n\nsource\n\n\nFliCamera.get_n_images\n\n FliCamera.get_n_images (blocking=True, return_ims=False, coadd=False,\n                         subtract_dark=False)\n\nAcquire a specified number of images from the camera.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nblocking\nbool\nTrue\nIf True, blocks until all requested images are acquired.\n\n\nreturn_ims\nbool\nFalse\nIf True, returns the acquired images.\n\n\ncoadd\nbool\nFalse\nIf True, returns the average of all acquired images.\n\n\nsubtract_dark\nbool\nFalse\nIf True, subtracts the dark frame from each image.\n\n\nReturns\nnumpy.ndarray or None\n\nIf return_ims is True, returns either a 3D array of images ora 2D array (if coadd=True). Otherwise returns None.\n\n\n\n\n\n\nFliCamera.mro\n\n FliCamera.mro ()\n\nReturn a type’s method resolution order.\n\nsource\n\n\nFliCamera.newim_callbackfunc\n\n FliCamera.newim_callbackfunc (image, ctx)\n\n*Callback function executed by the SDK when a new image is available.\nThis function is registered with the FliSdk_V2 and called automatically when new frames are captured. It handles updating the latest image buffer and logging images when requested.*\n\n\n\n\nType\nDetails\n\n\n\n\nimage\npointer\nPointer to the raw image data from the SDK.\n\n\nctx\npointer\nContext pointer passed by the SDK.\n\n\n\n\nsource\n\n\nFliCamera.reset_buffer\n\n FliCamera.reset_buffer ()\n\nReset the camera’s internal buffer, clearing any stored images.\n\nsource\n\n\nFliCamera.send_command\n\n FliCamera.send_command (commandstr, return_response=True, verbose=False)\n\nSend a command to the camera through the SDK.\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ncommandstr\nstr\n\nCommand string to send to the camera.\n\n\nreturn_response\nbool\nTrue\nIf True, returns the camera’s response.\n\n\nverbose\nbool\nFalse\nIf True, prints the command and response.\n\n\nReturns\nstr or None\n\nThe camera’s response if return_response is True, otherwise None.\n\n\n\n\nsource\n\n\nFliCamera.set_nims_tolog\n\n FliCamera.set_nims_tolog (nims)\n\nSet the number of images to acquire in subsequent operations.\n\n\n\n\nType\nDetails\n\n\n\n\nnims\nint\nNumber of images to acquire and store.\n\n\n\n\nsource\n\n\nFliCamera.set_tint\n\n FliCamera.set_tint (tint, verbose=False)\n\nSet the camera integration time (exposure time).\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ntint\nfloat\n\nIntegration time in seconds.\n\n\nverbose\nbool\nFalse\nIf True, prints the command and response.",
+    "crumbs": [
+      "cameras",
+      "FliCamera"
+    ]
+  }
+]
