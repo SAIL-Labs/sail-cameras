@@ -24,9 +24,6 @@ import ctypes
 from .BaseCameraInterface import BaseCameraInterface
 
 # %% ../nbs/cameras/01_first-light.ipynb 5
-from flisdk import FliSdk_V2
-
-# %% ../nbs/cameras/01_first-light.ipynb 6
 class FliCamera(BaseCameraInterface):
     def __init__(
         self,
@@ -40,6 +37,7 @@ class FliCamera(BaseCameraInterface):
         buffersize_ims=1000,
     ):
         super().__init__(**kwargs)
+        from flisdk import FliSdk_V2  ## import here to avoid errors if not installed.
 
         if cam_settings is None:
             self.dflt_settings = {
